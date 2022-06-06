@@ -14,7 +14,7 @@ export default hopeTheme({
 
     logo: "/logo.svg",
 
-    repo: "https://github.com/SurplusFate/SurplusFate.github.io",
+    repo: "https://github.com/SurplusFate/MyNote",
 
     docsDir: "/",
 
