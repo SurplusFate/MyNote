@@ -1,11 +1,16 @@
 import {defineUserConfig} from "vuepress";
 import theme from "./theme";
+import {hopeTheme} from "vuepress-theme-hope";
 
 export default defineUserConfig({
-    lang: "zh-CN",
+    base:"/",
     title: "空~",
     description: "学习记录",
-    base: "/",
-    theme,
+    locales: {
+        "/": {
+            lang: "zh-CN",
+        },
+    },
+    theme
 });
 

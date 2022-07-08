@@ -10,7 +10,7 @@ export const data = {
     "category": [
       "java"
     ],
-    "summary": "运算符 表达式类型的自动提升 当一个算术表达式中包含多个基本类型的值时，整个算术表达式的数据类型将发生自动提升。Java定义了如下的自动提升规则。 byte、short、char混合运算 byte、short、char做混合运算的时候，各自先转换成int再运算。 多种数据类型做混合运算 多种数据在做混合运算的时候，最终的结果是类型“最大容量”对应的类型（by",
+    "summary": "运算符 运算符是一种特殊的符号，用以表示数据的运算、赋值和比较等。Java语言使用运算符将一个或多个操作数连缀成执行性语句，用以实现特定功能。 算术运算符 算术运算符用在数学表达式中，它们的作用和在数学中的作用一样。 下表列出了所有的算术运算符。假设整数变量A的值为10，变量B的值为20： 符号 描述 示例 :--: :-------------------",
     "head": [
       [
         "meta",
@@ -43,6 +43,13 @@ export const data = {
       [
         "meta",
         {
+          "property": "og:updated_time",
+          "content": "2022-07-08T12:38:34.000Z"
+        }
+      ],
+      [
+        "meta",
+        {
           "property": "og:locale",
           "content": "zh-CN"
         }
@@ -52,6 +59,13 @@ export const data = {
         {
           "property": "article:published_time",
           "content": "2022-06-06T00:00:00.000Z"
+        }
+      ],
+      [
+        "meta",
+        {
+          "property": "article:modified_time",
+          "content": "2022-07-08T12:38:34.000Z"
         }
       ]
     ]
@@ -99,24 +113,28 @@ export const data = {
       "title": "instanceof 运算符",
       "slug": "instanceof-运算符",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "运算符的结合性和优先级",
+      "slug": "运算符的结合性和优先级",
+      "children": []
     }
   ],
+  "git": {
+    "createdTime": 1657283914000,
+    "updatedTime": 1657283914000,
+    "contributors": [
+      {
+        "name": "SurplusFate",
+        "email": "1543403469@qq.com",
+        "commits": 1
+      }
+    ]
+  },
   "readingTime": {
-    "minutes": 14.26,
-    "words": 4279
+    "minutes": 17.09,
+    "words": 5127
   },
   "filePathRelative": "Java/运算符.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }
