@@ -1,0 +1,949 @@
+<template><div><h1 id="流程控制与数组" tabindex="-1"><a class="header-anchor" href="#流程控制与数组" aria-hidden="true">#</a> 流程控制与数组</h1>
+<p>不论哪一种编程语言，都会提供两种基本的流程控制结构：分支结构和循环结构。其中分支结构用于实现根据条件来选择性地执行某段代码，循环结构则用于实现根据循环条件重复执行某段代码。</p>
+<h2 id="顺序结构" tabindex="-1"><a class="header-anchor" href="#顺序结构" aria-hidden="true">#</a> 顺序结构</h2>
+<p>任何编程语言中最常见的程序结构就是顺序结构。顺序结构就是程序从上到下逐行地执行，中间没有任何判断和跳转。</p>
+<p>如果main方法的多行代码之间没有任何流程控制，则程序总是从上向下依次执行，排在前面的代码先执行，排在后面的代码后执行。这意味着：如果没有流程控制，Java方法里的语句是一个顺序执行流，从上向下依次执行每条语句。</p>
+<h2 id="分支结构" tabindex="-1"><a class="header-anchor" href="#分支结构" aria-hidden="true">#</a> 分支结构</h2>
+<h3 id="if条件语句" tabindex="-1"><a class="header-anchor" href="#if条件语句" aria-hidden="true">#</a> if条件语句</h3>
+<p>在任何情况下只能有一个分支执行，不可能存在2个或者多个分支执行，if语句中只要有1个分支执行，整个if语句就结束了。</p>
+<p>if语句使用布尔表达式或布尔值作为分支条件来进行分支控制。if语句有如下三种形式。</p>
+<p>第一种：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">if</span><span class="token punctuation">(</span>logic expression<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statement<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>第二种：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">if</span><span class="token punctuation">(</span>logic expression<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statement<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    statement<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>第三种：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">if</span><span class="token punctuation">(</span>logic expression<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statement<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">{</span>
+    statement<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// 可以有零个或者多个else if语句</span>
+<span class="token keyword">else</span> <span class="token comment">// 最后的else语句也可以省略</span>
+<span class="token punctuation">{</span>
+    statement<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面if语句的三种形式中，放在if之后括号里的只能是一个逻辑表达式，即这个表达式的返回值只能是true或false。</p>
+<p>在上面的条件语句中，if(logic expression)、else if(logic expression)和else后花括号括起来的多行代码被称为代码块，一个代码块通常被当成一个整体来执行（除非运行过程中遇到return、break、continue等关键字，或者遇到了异常），因此这个代码块也被称为条件执行体。例如如下程序。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IfTest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
+        <span class="token comment">//只有当age > 20时，下面花括号括起来的代码块才会执行</span>
+        <span class="token comment">//花括号括起来的语句是一个整体，要么一起执行，要么一起不执行</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"年龄已经大于20岁了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"20岁以上的人应该学会承担责任..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果if(logic expression)、else if(logic expression)和else后的代码块只有一行语句时，则可以省略花括号，因为单行语句本身就是一个整体，无须用花括号来把它们定义成一个整体。下面代码完全可以正常执行。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//定义变量a，并为其赋值</span>
+<span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token comment">//如果a>4，则执行下面的执行体，只有一行代码作为代码块</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"a大于4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">else</span>
+<span class="token comment">//否则，执行下面的执行体，只有一行代码作为代码块</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"a不大于4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>通常，我们建议不要省略if、else、else if后执行体的花括号，即使条件执行体只有一行代码，也保留花括号会有更好的可读性，而且保留花括号会减少发生错误的可能。例如如下代码，则不能正常执行。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//定义变量b，并为其赋值</span>
+<span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>b <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token comment">//如果b>4，则执行下面的执行体，只有一行代码作为代码块</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"b大于4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">else</span>
+<span class="token comment">//否则，执行下面的执行体，只有一行代码作为代码块</span>
+    b<span class="token operator">-</span>—<span class="token punctuation">;</span>
+<span class="token comment">//对于下面代码而言，它已经不再是条件执行体的一部分，因此总会执行</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">""</span>b不大于<span class="token number">4</span>"<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>System.out.println(&quot;b不大于4&quot;);</code>，总会执行，因为这行代码并不属于else后的条件执行体，else后的条件执行体就是<code v-pre>b--;</code>这行代码。</p>
+<div class="custom-container warning"><p class="custom-container-title">注意</p>
+<p>if、else、else if后的条件执行体要么是一个花括号括起来的代码块，则这个代码块整体作为条件执行体；要么是以分号为结束符的一行语句，甚至可能是一个空语句（空语句是一个分号），那么就只是这条语句作为条件执行体。</p>
+</div>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//定义变量c，并为其赋值</span>
+<span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token comment">//如果c>4，则执行下面的执行体，将只有c--;一行代码为执行体</span>
+    c<span class="token operator">--</span><span class="token punctuation">;</span>
+<span class="token comment">//下面是一行普通代码，不属于执行体</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"c大于4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//此处的else将没有if语句，因此编译出错</span>
+<span class="token keyword">else</span>
+<span class="token comment">//否则，执行下面的执行体，只有一行代码作为代码块</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"c不大于4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>对于if语句，还有一个很容易出现的逻辑错误，这个逻辑错误并不属于语法问题，但引起错误的可能性更大。看下面程序：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IfErrorTest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age<span class="token operator">=</span><span class="token number">45</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"青年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">4</span>O<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"中年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"老年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>表面上看起来，上面的程序没有任何问题：人的年龄大于20岁是青年人，年龄大于40岁是中年人，年龄大于60岁是老年人。但运行上面程序，发现打印结果是：青年人，而实际上我们希望45岁应判断为中年人——这显然出现了一个问题。</p>
+<p>对于任何的if else语句，表面上看起来else后没有任何条件，或者else if后只有一个条件——但这不是真相：因为else的含义是“否则”——else本身就是一个条件！</p>
+<p>else的隐含条件是对前面条件取反。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IfErrorTest2</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age <span class="token operator">=</span> <span class="token number">45</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"青年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//在原本的if条件中增加了else的隐含条件</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">40</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"中年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//在原本的if条件中增加了else的隐含条件</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">60</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">40</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"老年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>对于<code v-pre>age &gt; 40 &amp;&amp; !(age &gt; 20)</code>这个条件，又可改写成<code v-pre>age &gt; 40 &amp;&amp; age &lt;=20</code>，这样永远也不会发生了。对于<code v-pre>age &gt; 60 &amp;&amp; !(age &gt; 20) &amp;&amp; !(age &gt; 40 &amp;&amp; !(age&gt; 20))</code>这个条件，则更不可能发生了。因此，程序永远都不会判断中年人和老年人的情形。</p>
+<p>为了达到正确的目的，我们把程序改写成如下形式。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IfCorrectTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age<span class="token operator">=</span><span class="token number">45</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"老年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"中年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"青年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>实际上，上面程序等同于下面代码。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestIfCorrect2</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age<span class="token operator">=</span><span class="token number">45</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"老年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//在原本的if条件中增加了else的隐含条件</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">40</span> <span class="token operator">&amp;&amp;</span> <span class="token function">l</span><span class="token punctuation">(</span>age <span class="token operator">></span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"中年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//在原本的if条件中增加了else的隐含条件</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">20</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>age <span class="token operator">></span> <span class="token number">40</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>age <span class="token operator">></span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"青年人"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="switch语句" tabindex="-1"><a class="header-anchor" href="#switch语句" aria-hidden="true">#</a> switch语句</h3>
+<p>switch语句执行原理：</p>
+<p>switch后面的小括号当中的“数据”和case后面的“数据”进行一一匹配，匹配成功分支执行。按照顺序结构依次匹配
+匹配成功的分支执行，分支当中最后有“break”语句的话，整个switch语句中止。</p>
+<p>如果没有“break”语句，就会直接进入下一个分支执行，不进行匹配（case穿透）当所有分支都匹配失败，此时如果有default,则执行default语句。</p>
+<p>switch和case后面只能是<code v-pre>int</code>或者<code v-pre>String</code>类型的数据，不能是变量，可以是枚举类型<code v-pre>byte</code>、<code v-pre>short</code>、<code v-pre>char</code>写进去会自动转换成<code v-pre>int</code>。</p>
+<p>一个比较完整的switch语句编写：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">switch</span> <span class="token punctuation">(</span>expression<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> condition1<span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function">statement</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> condition2<span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function">statement</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">case</span> conditionN<span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function">statement</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">default</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function">statement</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这种分支语句的执行是先对expression求值，然后依次匹配condition1、condition2、…、conditionN等值，遇到匹配的值即执行对应的执行体；如果所有case标签后的值都不与expression表达式的值相等，则执行default标签后的代码块。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SwitchTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//声明变量score，并为其赋值为'C'</span>
+        <span class="token keyword">char</span> score<span class="token operator">=</span><span class="token char">'C'</span><span class="token punctuation">;</span>
+        <span class="token comment">//执行switch分支语句</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>score<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token char">'A'</span><span class="token operator">:</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"优秀"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token char">'B'</span><span class="token operator">:</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"良好"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token char">'C'</span><span class="token operator">:</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"中"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token char">'D'</span><span class="token operator">:</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"及格"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token char">'F'</span><span class="token operator">:</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"不及格"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成绩输入错误"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>运行上面程序，看到输出“中”，这个结果完全正常，字符表达式score的值为'C'，对应结果为“中”。</p>
+<p>在case标签后的每个代码块后都有一条break;语句，这个break;语句有极其重要的意义，Java的switch语句允许case后代码块没有break;语句，但这种做法可能引入一个陷阱。如果把上面程序中的break;语句都注释掉，将看到如下运行结果：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>中
+及格
+不及格
+成绩输入错误
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>switch语句会先求出expression表达式的值，然后拿这个表达式和case标签后的值进行比较，一旦遇到相等的值，程序就开始执行这个case标签后的代码，不再判断与后面case、default标签的条件是否匹配，除非遇到break;才会结束。</p>
+<p>该现象称为：case穿透</p>
+<h2 id="循环结构" tabindex="-1"><a class="header-anchor" href="#循环结构" aria-hidden="true">#</a> 循环结构</h2>
+<p>循环语句可以在满足循环条件的情况下，反复执行某一段代码，这段被重复执行的代码被称为循环体。当反复执行这个循环体时，需要在合适的时候把循环条件改为假，从而结束循环，否则循环将一直执行下去，形成死循环。循环语句可能包含如下4个部分。</p>
+<ol>
+<li>初始化语句（init_statement）：一条或多条语句，这些语句用于完成一些初始化工作，初始化语句在循环开始之前执行。</li>
+<li>循环条件（test_expression）：这是一个boolean表达式，这个表达式能决定是否执行循环体。</li>
+<li>循环体（body_statement）：这个部分是循环的主体，如果循环条件允许，这个代码块将被重复执行。如果这个代码块只有一行语句，则这个代码块的花括号是可以省略的。</li>
+<li>迭代语句（iteration_statement）：这个部分在一次循环体执行结束后，对循环条件求值之前执行，通常用于控制循环条件中的变量，使得循环在合适的时候结束。</li>
+</ol>
+<p>上面4个部分只是一般分类，并不是每个循环中都非常清晰地分出了这4个成分。</p>
+<h3 id="while循环" tabindex="-1"><a class="header-anchor" href="#while循环" aria-hidden="true">#</a> while循环</h3>
+<p>while循环的语法格式如下：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token punctuation">[</span>init_statement<span class="token punctuation">]</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>test_expression<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    statement<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>iteration_statement<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>while循环每次执行循环体之前，先对test_ expression循环条件求值，如果循环条件为true，则运行循环体部分。从上面的语法格式来看，迭代语句iteration_statement总是位于循环体的最后，因此只有当循环体能成功执行完成时，while循环才会执行iteration_statement迭代语句。</p>
+<p>while循环也可被当成条件语句——如果test_expression条件一开始就为false，则循环体部分将永远不会获得执行。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WhileTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//循环的初始化条件</span>
+        <span class="token keyword">int</span> count<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span>
+        <span class="token comment">//当count小于10时，执行循环体</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//迭代语句</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"循环结束!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用while循环时，一定要保证循环条件有变成false的时候，否则这个循环将成为一个死循环，永远无法结束这个循环。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//下面是一个死循环</span>
+<span class="token keyword">int</span> count<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>"不停执行的死循环“<span class="token operator">+</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    count<span class="token operator">--</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"永远无法跳出的循环体"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面代码中，count的值越来越小，这将导致count值永远小于10，count &lt; 10循环条件一直为true，从而导致这个循环永远无法结束。</p>
+<p>除此之外，对于许多初学者而言，使用while循环时还有一个陷阱：while循环的循环条件后紧跟一个分号。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">int</span> count<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span>
+<span class="token comment">//while后紧跟一个分号，表明循环体是一个分号（空语句)</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//下面的代码块与while循环已经没有任何关系</span>
+<span class="token punctuation">{</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"------"</span> <span class="token operator">+</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>count<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个单独的分号表示一个空语句，不做任何事情的空语句，这意味着这个while循环的循环体是空语句。当Java反复执行这个循环体时，循环条件的返回值没有任何改变，这就成了一个死循环。分号后面的代码块则与while循环没有任何关系。</p>
+<h3 id="do-while循环语句" tabindex="-1"><a class="header-anchor" href="#do-while循环语句" aria-hidden="true">#</a> do while循环语句</h3>
+<p>do while循环与while循环的区别在于：while循环是先判断循环条件，如果条件为真则执行循环体；而do while循环则先执行循环体，然后才判断循环条件，如果循环条件为真，则执行下一次循环，否则中止循环。do while循环的语法格式如下：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token punctuation">[</span>init_statement<span class="token punctuation">]</span>
+<span class="token keyword">do</span><span class="token punctuation">{</span>
+    statement<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>iteration_statement<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token keyword">while</span> <span class="token punctuation">(</span>test_expression<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>与while循环不同的是，do while循环的循环条件后必须有一个分号，这个分号表明循环结束。下面程序示范了do while循环的用法。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DoWhileTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//定义变量count</span>
+        <span class="token keyword">int</span> count<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token comment">//执行do while循环</span>
+        <span class="token keyword">do</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//循环迭代语句</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token comment">//循环条件紧跟while关键字</span>
+        <span class="token punctuation">}</span><span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"循环结束!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>即使test_expression循环条件的值开始就是假，do while循环也会执行循环体。因此，do while循环的循环体至少执行一次。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//定义变量count2int count2=20;//执行do while循环</span>
+<span class="token keyword">do</span>
+<span class="token comment">//这行代码把循环体和迭代部分合并成了一行代码</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>count2<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>count2<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"循环结束!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="for循环" tabindex="-1"><a class="header-anchor" href="#for循环" aria-hidden="true">#</a> for循环</h3>
+<p>for循环是更加简洁的循环语句，大部分情况下，for循环可以代替while循环、do while循环。for循环的基本语法格式如下：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>init_statement<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">[</span>test_expression<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">[</span>iteration_statement<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    statement<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>程序执行for循环时，先执行循环的初始化语句init_statement，初始化语句只在循环开始前执行一次。每次执行循环体之前，先计算test_expression循环条件的值，如果循环条件返回true，则执行循环体部分，循环体执行结束后执行循环迭代语句。因此，对于for循环而言，循环条件总比循环体要多执行一次，因为最后一次执行循环条件返回false，将不再执行循环体。</p>
+<p>for循环的循环迭代语句并没有与循环体放在一起，因此即使在执行循环体时遇到continue语句结束本次循环，循环迭代语句也一样会得到执行。</p>
+<div class="custom-container warning"><p class="custom-container-title">注意</p>
+<p>for循环和while、do while循环不一样：由于while、do while循环的循环迭代语句紧跟着循环体，因此如果循环体不能完全执行，如使用continue语句来结束本次循环，则循环迭代语句不会被执行。但for循环的循环迭代语句并没有与循环体放在一起，因此不管是否使用continue语句来结束本次循环，循环迭代语句一样会获得执行。</p>
+</div>
+<p>与前面循环类似的是，如果循环体只有一行语句，那么循环体的花括号可以省略。下面使用for循环代替前面的while循环，代码如下。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ForTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//循环的初始化条件、循环条件、循环迭代语句都在下面一行</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> count<span class="token operator">=</span><span class="token class-name">O</span> <span class="token punctuation">;</span> count <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token punctuation">;</span> count<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"循环结束!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面的循环语句中，for循环的初始化语句只有一个，循环条件也只是一个简单的boolean表达式。实际上，for循环允许同时指定多个初始化语句，循环条件也可以是一个包含逻辑运算符的表达式。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ForTest2</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//同时定义了三个初始化变量，使用&amp;&amp;来组合多个boolean表达式</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> p<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> b <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">&amp;&amp;</span> s <span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token operator">&amp;&amp;</span> p <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> p<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>b<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token operator">++</span>s <span class="token operator">+</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面代码中初始化变量有三个，但是只能有一个声明语句，因此如果需要在初始化表达式中声明多个变量，那么这些变量应该具有相同的数据类型。</p>
+<p>初学者使用for循环时也容易犯一个错误，他们以为只要在for后的括号内控制了循环迭代语句就万无一失，但实际情况则不是这样的。例如下面的程序：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ForErrorTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//循环的初始化条件、循环条件、循环迭代语句都在下面一行</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> count<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span> count <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> count<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//再次修改了循环变量</span>
+            count <span class="token operator">*=</span><span class="token number">0.1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"循环结束!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在循环体内修改了count变量的值，并且把这个变量的值乘以了0.1，这也会导致count的值永远都不能超过10，因此上面程序也是一个死循环。</p>
+<p>for循环圆括号中只有两个分号是必需的，初始化语句、循环条件、迭代语句部分都是可以省略的，如果省略了循环条件，则这个循环条件默认为true，将会产生一个死循环。例如下面程序：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DeadForTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//省略了for循环三个部分，循环条件将一直为true</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用for循环时，还可以把初始化条件定义在循环体之外，把循环迭代语句放在循环体内，这种做法就非常类似于前面的while循环了。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ForInsteadWhile</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//把for循环的初始化条件提出来独立定义</span>
+        <span class="token keyword">int</span> count<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span>
+        <span class="token comment">//for循环里只放循环条件</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span>count <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//把循环迭代部分放在循环体之后定义</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"循环结束!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//此处将还可以访问count变量</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>把for循环的初始化语句放在循环之前定义还有一个作用：可以扩大初始化语句中所定义变量的作用域。在for循环里定义的变量，其作用域仅在该循环内有效，for循环终止以后，这些变量将不可被访问。如果需要在for循环以外的地方使用这些变量的值，就可以采用上面的做法。</p>
+<p>除此之外，还有一种做法也可以满足这种要求：额外定义一个变量来保存这个循环变量的值。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">int</span> tmp<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span>
+<span class="token comment">//循环的初始化条件、循环条件、循环迭代语句都在下面一行</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token class-name">O</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span><span class="token number">10</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//使用tmp来保存循环变量i的值</span>
+    tmp<span class="token operator">=</span>i<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"循环结束!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//此处还可通过tmp变量来访问i变量的值</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用一个变量tmp来保存循环变量i的值，使得程序更加清晰，变量i和变量tmp的责任更加清晰。</p>
+<h3 id="嵌套循环" tabindex="-1"><a class="header-anchor" href="#嵌套循环" aria-hidden="true">#</a> 嵌套循环</h3>
+<p>如果把一个循环放在另一个循环体内，那么就可以形成嵌套循环，嵌套循环既可以是for循环嵌套while循环，也可以是while循环嵌套do while循环……即各种类型的循环都可以作为外层循环，各种类型的循环也可以作为内层循环。</p>
+<p>当程序遇到嵌套循环时，如果外层循环的循环条件允许，则开始执行外层循环的循环体，而内层循环将被外层循环的循环体来执行——只是内层循环需要反复执行自己的循环体而已。当内层循环执行结束，且外层循环的循环体执行结束时，则再次计算外层循环的循环条件，决定是否再次开始执行外层循环的循环体。</p>
+<p>根据上面分析，假设外层循环的循环次数为n次，内层循环的循环次数为m次，那么内层循环的循环体实际上需要执行n×m次。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071109553.jpeg" alt="img" loading="lazy"></p>
+<p>嵌套循环就是把内层循环当成外层循环的循环体。当只有内层循环的循环条件为false时，才会完全跳出内层循环，才可以结束外层循环的当次循环，开始下一次循环。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NestedLoopTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//外层循环</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//内层循环</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"i的值为:"</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">"j的值为:"</span><span class="token operator">+</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>进入嵌套循环时，循环变量i开始为0，这时即进入了外层循环。进入外层循环后，内层循环把i当成一个普通变量，其值为0。在外层循环的当次循环里，内层循环就是一个普通循环。</p>
+<p>实际上，嵌套循环不仅可以是两层嵌套，而且可以是三层嵌套、四层嵌套……不论循环如何嵌套，我们都可以把内层循环当成外层循环的循环体来对待，区别只是这个循环体里包含了需要反复执行的代码。</p>
+<h3 id="控制循环结构" tabindex="-1"><a class="header-anchor" href="#控制循环结构" aria-hidden="true">#</a> 控制循环结构</h3>
+<p>Java语言没有提供goto语句来控制程序的跳转，这种做法提高了程序流程控制的可读性，但降低了程序流程控制的灵活性。为了弥补这种不足，Java提供了<code v-pre>continue</code>和<code v-pre>break</code>来控制循环结构。除此之外，<code v-pre>return</code>可以结束整个方法，当然也就结束了一次循环。</p>
+<p><strong>使用break结束循环</strong></p>
+<p>在某些时候，我们需要在某种条件出现时强行终止循环，而不是等到循环条件为false时才退出循环。此时，可以使用break来完成这个功能。break用于完全结束一个循环，跳出循环体。不管是哪种循环，一旦在循环体中遇到break，系统将完全结束该循环，开始执行循环之后的代码。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BreakTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//一个简单的for循环</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"i的值是"</span><span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment">//执行该语句时将结束循环</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>运行上面程序，将看到i循环到2时即结束，当i等于2时，循环体内遇到break语句，程序跳出该循环。</p>
+<p>break语句不仅可以结束其所在的循环，还可以直接结束其外层循环。此时需要在break后紧跟一个标签，这个标签用于标识一个外层循环。</p>
+<p>Java中的标签就是一个紧跟着英文冒号（:）的标识符。与其他语言不同的是，Java中的标签只有放在循环语句之前才有作用。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BreakTest2</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//外层循环,outer作为标识符</span>
+        outer<span class="token operator">:</span><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">5</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//内层循环</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"i的值为:"</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">" j的值为:"</span><span class="token operator">+</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token comment">//跳出outer标签所标识的循环</span>
+                    <span class="token keyword">break</span> outer<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>程序从外层循环进入内层循环后，当j等于1时，程序遇到一个break outer;语句，这行代码将会导致结束outer标签指定的循环，不是结束break所在的循环，而是结束break循环的外层循环。</p>
+<p>break后的标签必须是一个有效的标签，即这个标签必须在break语句所在的循环之前定义，或者在其所在循环的外层循环之前定义。</p>
+<p>如果把这个标签放在break语句所在的循环之前定义，也就失去了标签的意义，因为break默认就是结束其所在的循环。</p>
+<p><strong>使用continue结束本次循环</strong></p>
+<p>continue的功能和break有点类似，区别是continue只是终止本次循环，接着开始下一次循环；而break则是完全终止循环本身。可以理解为continue的作用是跳过当次循环中剩下的语句，重新开始一次新的循环。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ContinueTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//一个简单的for循环</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"i的值是"</span><span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span> i<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment">//略过本次循环的剩下语句</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"continue后的输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>当i等于1时，程序没有输出“continue后的输出语句”字符串，因为程序执行到continue时，忽略了当次循环中continue语句后的代码。从这个意义上来看，如果把一个continue语句放在单次循环的最后一行，这个continue语句是没有任何意义的——因为它仅仅忽略了一片空白，没有忽略任何程序语句。</p>
+<p>与break类似的是，continue后也可以紧跟一个标签，用于直接跳过标签所标识循环的当次循环的剩下语句，重新开始下一次循环。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ContinueTest2</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//外层循环</span>
+        outer<span class="token operator">:</span><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token class-name">O</span> <span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">5</span> <span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//内层循环</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>o<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">3</span> <span class="token punctuation">;</span> j<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"i的值为:"</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">" j的值为:"</span>＋ j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token comment">//跳出outer标签所指定的循环</span>
+                    <span class="token keyword">continue</span> outer<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>运行上面程序可以看到，循环变量j的值将无法超过1，因为每当j等于1时，continue outer语句就结束了外层循环的当次循环，直接开始下一次循环，内层循环没有机会执行完成。</p>
+<p>与break类似的是，continue后的标签也必须是一个有效标签，即这个标签通常应该放在continue所在循环的外层循环之前定义。</p>
+<p><strong>使用return结束方法</strong></p>
+<p>return关键字并不是专门用于结束循环的，return的功能是结束一个方法。当一个方法执行到一个return语句时，这个方法将被结束。</p>
+<p>一旦在循环体内执行到一个return语句，return语句就会结束该方法，循环自然也随之结束。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ReturnTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//一个简单的for循环</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token class-name">O</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span> <span class="token number">3</span> <span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"i的值是"</span><span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"continue后的输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>运行上面程序，循环只能执行到i等于1时，当i等于1时程序将完全结束（当main方法结束时，也就是Java程序结束时）。从这个运行结果来看，虽然return并不是专门用于循环结构控制的关键字，但通过return语句确实可以结束一个循环。与continue和break不同的是，return直接结束整个方法，不管这个return处于多少层循环之内。</p>
+<h2 id="数组类型" tabindex="-1"><a class="header-anchor" href="#数组类型" aria-hidden="true">#</a> 数组类型</h2>
+<p>数组是编程语言中最常见的一种数据结构，可用于存储多个数据，每个数组元素存放一个数据，通常可通过数组元素的索引来访问数组元素，包括为数组元素赋值和取出数组元素的值。Java语言的数组则具有其特有的特征，下面将详细介绍Java语言的数组。</p>
+<h3 id="理解数组-数组也是一种类型" tabindex="-1"><a class="header-anchor" href="#理解数组-数组也是一种类型" aria-hidden="true">#</a> 理解数组：数组也是一种类型</h3>
+<p>Java的数组要求所有的数组元素具有相同的数据类型。因此，在一个数组中，数组元素的类型是唯一的，即一个数组里只能存储一种数据类型的数据，而不能存储多种数据类型的数据。</p>
+<div class="custom-container tip"><p class="custom-container-title">提示</p>
+<p>因为Java语言是面向对象的语言，而类与类之间可以支持继承关系，这样可能产生一个数组里可以存放多种数据类型的假象。例如有一个水果数组，要求每个数组元素都是水果，实际上数组元素既可以是苹果，也可以是香蕉，但这个数组的数组元素的类型还是唯一的，只能是水果类型。</p>
+</div>
+<p>一旦数组的初始化完成，数组在内存中所占的空间将被固定下来，因此数组的长度将不可改变。即使把某个数组元素的数据清空，但它所占的空间依然被保留，依然属于该数组，数组的长度依然不变。</p>
+<p>Java的数组既可以存储基本类型的数据，也可以存储引用类型的数据，只要所有的数组元素具有相同的类型即可。</p>
+<p>值得指出的是，数组也是一种数据类型，它本身是一种引用类型。例如int是一个基本类型，但int[] （这是定义数组的一种方式）就是一种引用类型了。</p>
+<h3 id="定义数组" tabindex="-1"><a class="header-anchor" href="#定义数组" aria-hidden="true">#</a> 定义数组</h3>
+<p>Java语言支持两种语法格式来定义数组：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>type<span class="token punctuation">[</span><span class="token punctuation">]</span> arrayName<span class="token punctuation">;</span>
+type arrayName<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>对这两种语法格式而言，通常推荐使用第一种格式。因为第一种格式不仅具有更好的语意，而且具有更好的可读性。</p>
+<div class="custom-container info"><p class="custom-container-title">相关信息</p>
+<p>Java的模仿者C#就不再支持type arrayName[]这种语法，它只支持第一种定义数组的语法。越来越多的语言不再支持type arrayName[]这种数组定义语法。</p>
+</div>
+<p>数组是一种引用类型的变量，因此使用它定义一个变量时，仅仅表示定义了一个引用变量（也就是定义了一个指针），这个引用变量还未指向任何有效的内存，因此定义数组时不能指定数组的长度。而且由于定义数组只是定义了一个引用变量，并未指向任何有效的内存空间，所以还没有内存空间来存储数组元素，因此这个数组也不能使用，只有对数组进行初始化后才可以使用。</p>
+<div class="custom-container tip"><p class="custom-container-title">提示</p>
+<p>定义数组时不能指定数组的长度。</p>
+</div>
+<h3 id="数组的初始化" tabindex="-1"><a class="header-anchor" href="#数组的初始化" aria-hidden="true">#</a> 数组的初始化</h3>
+<p>Java语言中数组必须先初始化，然后才可以使用。所谓初始化，就是为数组的数组元素分配内存空间，并为每个数组元素赋初始值。</p>
+<div class="custom-container tip"><p class="custom-container-title">提示</p>
+<p>一旦为数组的每个数组元素分配了内存空间，每个内存空间里存储的内容就是该数组元素的值，即使这个内存空间存储的内容是空，这个空也是一个值（null）。不管以哪种方式来初始化数组，只要为数组元素分配了内存空间，数组元素就具有了初始值。初始值的获得有两种形式：一种由系统自动分配，另一种由程序员指定。</p>
+</div>
+<p>数组的初始化有如下两种方式。</p>
+<p>静态初始化：初始化时由程序员显式指定每个数组元素的初始值，由系统决定数组长度。</p>
+<p>动态初始化：初始化时程序员只指定数组长度，由系统为数组元素分配初始值。</p>
+<ol>
+<li>
+<p><strong>静态初始化</strong></p>
+<p>静态初始化的语法格式如下：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>type<span class="token punctuation">[</span><span class="token punctuation">]</span> arrayName <span class="token operator">=</span> <span class="token keyword">new</span> type<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span>element1<span class="token punctuation">,</span> element2<span class="token punctuation">,</span> element3<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>前面的type就是数组元素的数据类型，此处的type必须与定义数组变量时所使用的type相同，也可以是定义数组时所指定的type的子类，并使用花括号把所有的数组元素括起来，多个数组元素之间以英文逗号（,）隔开，定义初始化值的花括号紧跟[]之后。值得指出的是，执行静态初始化时，显式指定的数组元素值的类型必须与new关键字后的type类型相同，或者是其子类的实例。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//定义一个int数组类型的变量，变量名为</span>
+intArrint<span class="token punctuation">[</span><span class="token punctuation">]</span>intArr<span class="token punctuation">;</span>
+<span class="token comment">//使用静态初始化，初始化数组时只指定数组元素的初始值，不指定数组长度</span>
+intArr<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//定义一个Object数组类型的变量，变量名为</span>
+objArrObject<span class="token punctuation">[</span><span class="token punctuation">]</span> objArr<span class="token punctuation">;</span>
+<span class="token comment">//使用静态初始化，初始化数组时数组元素的类型是</span>
+<span class="token comment">//定义数组时数组元素类型的子类</span>
+objArr<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token string">"Java"</span> <span class="token punctuation">,</span> <span class="token string">"李刚"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> objArr2<span class="token punctuation">;</span>
+<span class="token comment">//使用静态初始化</span>
+objArr2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token string">"Java"</span> <span class="token punctuation">,</span> <span class="token string">"李刚"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>因为Java语言是面向对象的编程语言，能很好地支持子类和父类的继承关系：子类实例是一种特殊的父类实例。在上面程序中，String类型是Object类型的子类，即字符串是一种特殊的Object实例。</p>
+<p>除此之外，静态初始化还有如下简化的语法格式：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>type<span class="token punctuation">[</span><span class="token punctuation">]</span> arrayName <span class="token operator">=</span> <span class="token punctuation">{</span>element1<span class="token punctuation">,</span> element2<span class="token punctuation">,</span> element3<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>在这种语法格式中，直接使用花括号来定义一个数组，花括号把所有的数组元素括起来形成一个数组。</p>
+<p>在实际开发过程中，可能更习惯将数组定义和数组初始化同时完成。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p><strong>动态初始化</strong></p>
+<p>动态初始化只指定数组的长度，由系统为每个数组元素指定初始值。动态初始化的语法格式如下：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>type<span class="token punctuation">[</span><span class="token punctuation">]</span> arrayName <span class="token operator">=</span> <span class="token keyword">new</span> type<span class="token punctuation">[</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>在上面语法中，需要指定一个int类型的length参数，这个参数指定了数组的长度，也就是可以容纳数组元素的个数。与静态初始化相似的是，此处的type必须与定义数组时使用的type类型相同，或者是定义数组时使用的type类型的子类。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//数组的定义和初始化同时完成，使用动态初始化语法</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> prices<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">//数组的定义和初始化同时完成，初始化数组时元素的类型是定义数组时元素类型的子类</span>
+<span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> books<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行动态初始化时，程序员只需指定数组的长度，即为每个数组元素指定所需的内存空间，系统将负责为这些数组元素分配初始值。指定初始值时，系统按如下规则分配初始值。</p>
+<ol>
+<li>数组元素的类型是基本类型中的整数类型（byte、short、int和long），则数组元素的值是0。</li>
+<li>数组元素的类型是基本类型中的浮点类型（float、double），则数组元素的值是0.0。</li>
+<li>数组元素的类型是基本类型中的字符类型（char），则数组元素的值是'\u0000'。</li>
+<li>数组元素的类型是基本类型中的布尔类型（boolean），则数组元素的值是false。</li>
+<li>数组元素的类型是引用类型（类、接口和数组），则数组元素的值是null。</li>
+</ol>
+<div class="custom-container warning"><p class="custom-container-title">注意</p>
+<p>不要同时使用静态初始化和动态初始化，也就是说，不要在进行数组初始化时，既指定数组的长度，也为每个数组元素分配初始值。</p>
+</div>
+</li>
+</ol>
+<h3 id="使用数组" tabindex="-1"><a class="header-anchor" href="#使用数组" aria-hidden="true">#</a> 使用数组</h3>
+<p>数组最常用的用法就是访问数组元素，包括对数组元素进行赋值和取出数组元素的值。</p>
+<p>访问数组元素都是通过在数组引用变量后紧跟一个方括号（[]），方括号里是数组元素的索引值，这样就可以访问数组元素了。</p>
+<p>访问到数组元素后，就可以把一个数组元素当成一个普通变量使用了，包括为该变量赋值和取出该变量的值，这个变量的类型就是定义数组时使用的类型。</p>
+<p>Java语言的数组索引是从0开始的，也就是说，第一个数组元素的索引值为0，最后一个数组元素的索引值为数组长度减1。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//输出objArr数组的第二个元素，将输出字符串"李刚"</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>objArr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//为objArr2的第一个数组元素赋值</span>
+objArr2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Spring"</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果访问数组元素时指定的索引值小于0，或者大于等于数组的长度，编译程序不会出现任何错误，但运行时出现异常：<code v-pre>java.lang.ArrayIndexOutOfBoundsException: N（数组索引越界异常）</code>，异常信息后的N就是程序员试图访问的数组索引。</p>
+<div class="custom-container info"><p class="custom-container-title">相关信息</p>
+<p>为什么要记住这些异常信息？</p>
+<p>编写一个程序，并不是单单指在电脑里敲出这些代码，还包括调试这个程序，使之可以正常运行。没有任何人可以保证自己写的程序总是正确的，因此调试程序是写程序的重要组成部分，调试程序的工作量往往超过编写代码的工作量。如何根据错误提示信息，准确定位错误位置，并排除程序错误是程序员的基本功。培养这些基本功需要记住常见的异常信息，以及对应的出错原因。</p>
+</div>
+<p>所有的数组都提供了一个length属性，通过这个属性可以访问到数组的长度，一旦获得了数组的长度，就可以通过循环来遍历该数组的每个数组元素。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//使用循环输出prices数组的每个数组元素的值</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prices<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>prices<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>动态初始化的数组元素进行赋值，并通过循环方式输出每个数组元素。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//对动态初始化后的数组元素进行赋值</span>
+books<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"疯狂Java讲义"</span><span class="token punctuation">;</span>
+books<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"轻量级Java EE企业应用实战"</span><span class="token punctuation">;</span>
+<span class="token comment">//使用循环输出books数组的每个数组元素的值</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>o <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> books<span class="token punctuation">.</span>length <span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>books<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>初始化一个数组后，相当于同时初始化了多个相同类型的变量，通过数组元素的索引就可以自由访问这些变量（实际上都是数组元素）。</p>
+<p>使用数组元素与使用普通变量并没有什么不同，一样可以对数组元素进行赋值，或者取出数组元素的值。</p>
+<h3 id="foreach循环" tabindex="-1"><a class="header-anchor" href="#foreach循环" aria-hidden="true">#</a> foreach循环</h3>
+<p>使用foreach循环遍历数组和集合元素时，无须获得数组和集合长度，无须根据索引来访问数组元素和集合元素，foreach循环自动遍历数组和集合的每个元素。</p>
+<p>foreach循环的语法格式如下：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">for</span><span class="token punctuation">(</span>type variableName <span class="token operator">:</span> array <span class="token operator">|</span> collection<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//variableName自动迭代访问每个元素..</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面语法格式在中，type是数组元素或集合元素的类型，variableName是一个形参名，foreach循环将自动将数组元素、集合元素依次赋给该变量。下面程序示范了如何使用foreach循环来遍历数组元素。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ForEachTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> books<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"轻量级Java EE企业应用实战"</span><span class="token punctuation">,</span> <span class="token string">"疯狂Java讲义"</span><span class="token punctuation">,</span> <span class="token string">"疯狂Android讲义"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">//使用foreach循环来遍历数组元素//其中book将会自动迭代每个数组元素</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> book <span class="token operator">:</span> books<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用foreach循环遍历数组元素时无须获得数组长度，也无须根据索引来访问数组元素。foreach循环和普通循环不同的是，它无须循环条件，无须循环迭代语句，这些部分都由系统来完成，foreach循环自动迭代数组的每个元素，当每个元素都被迭代一次后，foreach循环自动结束。</p>
+<p>当使用foreach循环来迭代输出数组元素或集合元素时，通常不要对循环变量进行赋值，虽然这种赋值在语法上是允许的，但没有太大的实际意义，而且极易引起错误。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ForEachErrorTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> books<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"轻量级Java EE企业应用实战"</span><span class="token punctuation">,</span> <span class="token string">"疯狂Java讲义"</span><span class="token punctuation">,</span> <span class="token string">"疯狂Android讲义"</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token comment">//使用foreach循环来遍历数组元素，其中book将会自动迭代每个数组元素</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> book <span class="token operator">:</span> books<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            book<span class="token operator">=</span><span class="token string">"疯狂Ajax讲义"</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>books<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>由于我们在foreach循环中对数组元素进行赋值，结果导致不能正确遍历数组元素，不能正确地取出每个数组元素的值。而且当再次访问第一个数组元素时，发现数组元素的值依然没有改变。</p>
+<p>不难看出，当使用foreach来迭代访问数组元素时，foreach中的循环变量相当于一个临时变量，系统会把数组元素依次赋给这个临时变量，而这个临时变量并不是数组元素，它只是保存了数组元素的值。</p>
+<p>因此，如果希望改变数组元素的值，则不能使用这种foreach循环。</p>
+<h2 id="深入数组" tabindex="-1"><a class="header-anchor" href="#深入数组" aria-hidden="true">#</a> 深入数组</h2>
+<p>数组是一种引用数据类型，数组引用变量只是一个引用，数组元素和数组变量在内存里是分开存放的。下面将深入介绍数组在内存中的运行机制。</p>
+<h3 id="内存中的数组" tabindex="-1"><a class="header-anchor" href="#内存中的数组" aria-hidden="true">#</a> 内存中的数组</h3>
+<p>数组引用变量只是一个引用，这个引用变量可以指向任何有效的内存，只有当该引用指向有效内存后，才可通过该数组变量来访问数组元素。</p>
+<p>与所有引用变量相同的是，引用变量是访问真实对象的根本方式。也就是说，如果我们希望在程序中访问数组对象本身，则只能通过这个数组的引用变量来访问它。</p>
+<p>实际的数组对象被存储在堆（heap）内存中；如果引用该数组对象的数组引用变量是一个局部变量，那么它被存储在栈（stack）内存中。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071311690.jpeg" alt="img" loading="lazy"></p>
+<p>如果需要访问如图所示堆内存中的数组元素，则程序中只能通过p[index]的形式实现。也就是说，数组引用变量是访问堆内存中数组元素的根本方式。</p>
+<div class="custom-container info"><p class="custom-container-title">相关信息</p>
+<p>为什么有栈内存和堆内存之分？</p>
+<p>当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁。因此，所有在方法中定义的局部变量都是放在栈内存中的；当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（在方法的参数传递时很常见），则这个对象依然不会被销毁。只有当一个对象没有任何引用变量引用它时，系统的垃圾回收器才会在合适的时候回收它。</p>
+</div>
+<p>如果堆内存中数组不再有任何引用变量指向自己，则这个数组将成为垃圾，该数组所占的内存将会被系统的垃圾回收机制回收。</p>
+<p>因此，为了让垃圾回收机制回收一个数组所占的内存空间，可以将该数组变量赋为null，也就切断了数组引用变量和实际数组之间的引用关系，实际的数组也就成了垃圾。</p>
+<p>只要类型相互兼容，就可以让一个数组变量指向另一个实际的数组，这种操作会让人产生数组的长度可变的错觉。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArrayInRam</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token comment">//定义并初始化数组，使用静态初始化</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span> <span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    	<span class="token comment">//定义并初始化数组，使用动态初始化</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token comment">//输出b数组的长度</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">""</span>b数组的长度为<span class="token operator">:</span>"<span class="token operator">+</span> b<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//循环输出a数组的元素</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">,</span>len<span class="token operator">=</span>a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len <span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//循环输出b数组的元素</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">,</span> len<span class="token operator">=</span>b<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len <span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token comment">//因为a是int[]类型，b也是int[类型，所以可以将a的值赋给b。</span>
+        <span class="token comment">//也就是让b引用指向a引用指向的数组</span>
+		b<span class="token operator">=</span>a<span class="token punctuation">;</span>
+		<span class="token comment">//再次输出b数组的长度</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"b数组的长度为:"</span><span class="token operator">+</span> b<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 4</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>运行上面代码后，将可以看到先输出b数组的长度为4，然后依次输出a数组和b数组的每个数组元素，接着会输出b数组的长度为3。</p>
+<p>看起来似乎数组的长度是可变的，但这只是一个假象。必须牢记：定义并初始化一个数组后，在内存中分配了两个空间，一个用于存放数组的引用变量，另一个用于存放数组本身。</p>
+<p>当程序定义并初始化了a、b两个数组后，系统内存中实际上产生了4块内存区，其中栈内存中有两个引用变量：a和b；堆内存中也有两块内存区，分别用于存储a和b引用所指向的数组本身。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071323537.jpeg" alt="img" loading="lazy"></p>
+<p>当执行上面的代码<code v-pre>b=a;</code>时，系统将会把a的值赋给b，a和b都是引用类型变量，存储的是地址。因此把a的值赋给b后，就是让b指向a所指向的地址。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071328339.jpeg" alt="img" loading="lazy"></p>
+<p>当执行了b=a之后，堆内存中的第一个数组具有了两个引用：a变量和b变量都引用了第一个数组。此时第二个数组失去了引用，变成垃圾，只有等待垃圾回收机制来回收它——但它的长度依然不会改变，直到它彻底消失。</p>
+<h3 id="基本类型数组的初始化" tabindex="-1"><a class="header-anchor" href="#基本类型数组的初始化" aria-hidden="true">#</a> 基本类型数组的初始化</h3>
+<p>对于基本类型数组而言，数组元素的值直接存储在对应的数组元素中，因此，初始化数组时，先为该数组分配内存空间，然后直接将数组元素的值存入对应数组元素中。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PrimitiveArrayTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//定义一个int[]类型的数组变量</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> iArr<span class="token punctuation">;</span>
+        <span class="token comment">//动态初始化数组，数组长度为5</span>
+        iArr<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">//采用循环方式为每个数组元素赋值</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>iArr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            iArr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>i <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行第一行代码<code v-pre>int[] iArr;</code>时，仅定义一个数组变量，此时内存中的存储示意图如图。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071333903.jpeg" alt="img" loading="lazy"></p>
+<p>执行了<code v-pre>int[] iArr;</code>代码后，仅在栈内存中定义了一个空引用（就是iArr数组变量），这个引用并未指向任何有效的内存，当然无法指定数组的长度。</p>
+<p>当执行iArr=new int[5];动态初始化后，系统将负责为该数组分配内存空间，并分配默认的初始值：所有数组元素都被赋值为0。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071334441.jpeg" alt="img" loading="lazy"></p>
+<p>此时iArr数组的每个数组元素的值都是0，当循环为该数组的每个数组元素依次赋值后，此时每个数组元素的值都变成程序显式指定的值。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071336642.jpeg" alt="img" loading="lazy"></p>
+<h3 id="引用类型数组的初始化" tabindex="-1"><a class="header-anchor" href="#引用类型数组的初始化" aria-hidden="true">#</a> 引用类型数组的初始化</h3>
+<p>引用类型数组的数组元素是引用，因此情况变得更加复杂。每个数组元素里存储的还是引用，它指向另一块内存，这块内存里存储了有效数据。</p>
+<p>定义一个Person类：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
+    <span class="token comment">//年龄</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+    <span class="token comment">//身高</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> height<span class="token punctuation">;</span>
+    <span class="token comment">//定义一个info方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我的年龄是:"</span><span class="token operator">+</span>age<span class="token operator">+</span><span class="token string">"，我的身高是:"</span> <span class="token operator">+</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义一个Person[]数组，接着动态初始化这个Person[]数组，并为这个数组的每个数组元素指定值。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ReferenceArrayTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//定义一个students数组变量，其类型是Person[]</span>
+        <span class="token class-name">Person</span><span class="token punctuation">[</span><span class="token punctuation">]</span>students<span class="token punctuation">;</span>
+        <span class="token comment">//执行动态初始化</span>
+        students<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">//创建一个Person实例，并将这个Person实例赋给zhang变量</span>
+        <span class="token class-name">Person</span> zhang<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//为zhang所引用的Person对象的age、height赋值</span>
+        zhang<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">;</span>
+        zhang<span class="token punctuation">.</span>height<span class="token operator">=</span><span class="token number">158</span><span class="token punctuation">;</span>
+        <span class="token comment">//创建一个Person实例，并将这个Person实例赋给lee变量</span>
+        <span class="token class-name">Person</span> lee<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//为lee所引用的Person对象的age、height赋值</span>
+        lee<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">;</span>
+        lee<span class="token punctuation">.</span>height<span class="token operator">=</span><span class="token number">161</span><span class="token punctuation">;</span>
+        <span class="token comment">//将zhang变量的值赋给第一个数组元素</span>
+        students<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>zhang<span class="token punctuation">;</span>
+        <span class="token comment">//将lee变量的值赋给第二个数组元素</span>
+        students<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>lee<span class="token punctuation">;</span>
+        <span class="token comment">//下面两行代码的结果完全一样，因为lee</span>
+        <span class="token comment">//和students[1]指向的是同一个Person实例</span>
+        lee<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        students<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行Person[] students;代码时，这行代码仅仅在栈内存中定义了一个引用变量，也就是一个指针，这个指针并未指向任何有效的内存区。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071343733.jpeg" alt="img" loading="lazy"></p>
+<p>栈内存中定义了一个students变量，它仅仅是一个引用，并未指向任何有效的内存。直到执行初始化，本程序对students数组执行动态初始化，动态初始化由系统为数组元素分配默认的初始值：null，即每个数组元素的值都是null。</p>
+<p>students数组的两个数组元素都是引用，而且这个引用并未指向任何有效的内存，因此每个数组元素的值都是null。这意味着依然不能直接使用students数组元素，因为每个数组元素都是null，这相当于定义了两个连续的Person变量，但这个变量还未指向任何有效的内存区，所以这两个连续的Person变量（students数组的数组元素）还不能使用。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071345923.jpeg" alt="img" loading="lazy"></p>
+<p>接着的代码定义了zhang和lee两个Person实例，定义这两个实例实际上分配了4块内存，在栈内存中存储了zhang和lee两个引用变量，还在堆内存中存储了两个Person实例。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071346575.jpeg" alt="img" loading="lazy"></p>
+<p>此时students数组的两个数组元素依然是null，直到程序依次将zhang赋给students数组的第一个元素，把lee赋给students数组的第二个元素，students数组的两个数组元素将会指向有效的内存区。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071347494.jpeg" alt="img" loading="lazy"></p>
+<p>此时zhang和students[0]指向同一个内存区，而且它们都是引用类型变量，因此通过zhang和students[0]来访问Person实例的Field和方法的效果完全一样，不论修改students[0]所指向的Person实例的Field，还是修改zhang变量所指向的Person实例的Field，所修改的其实是同一个内存区，所以必然互相影响。</p>
+<p>同理，lee和students[1]也是引用同一个Person对象，也具有相同的效果。</p>
+<h3 id="多维数组" tabindex="-1"><a class="header-anchor" href="#多维数组" aria-hidden="true">#</a> 多维数组</h3>
+<p>Java语言里的数组类型是引用类型，因此，数组变量其实是一个引用，这个引用指向真实的数组内存。数组元素的类型也可以是引用，如果数组元素的引用再次指向真实的数组内存，这种情形看上去很像多维数组。</p>
+<p>但如果从数组底层的运行机制上来看，没有多维数组。</p>
+<p>回到前面定义数组类型的语法：<code v-pre>type[] arrName;</code>，这是典型的一维数组的定义语法，其中type是数组元素的类型。如果希望数组元素也是一个引用，而且是指向int数组的引用，则可以把type具体成int[] （前面已经指出，int[]就是一种类型，int[]类型的用法与普通类型并无任何区别），那么上面定义数组的语法就是<code v-pre>int[][] arrName</code>。</p>
+<p>如果把int这个类型扩大到Java的所有类型（不包括数组类型），则出现了定义二维数组的语法：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>type<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrName<span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>Java语言采用上面的语法格式来定义二维数组，但它的实质还是一维数组，只是其数组元素也是引用，数组元素里保存的引用指向一维数组。</p>
+<p>接着对这个“二维数组”执行初始化，同样可以把这个数组当成一维数组来初始化，把这个“二维数组”当成一个一维数组，其元素的类型是type[]类型，则可以采用如下语法进行初始化：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>arrName <span class="token operator">=</span> <span class="token keyword">new</span> type<span class="token punctuation">[</span>length<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>上面的初始化语法相当于初始化了一个一维数组，这个一维数组的长度是length。同样，因为这个一维数组的数组元素是引用类型（数组类型）的，所以系统为每个数组元素都分配初始值：null。</p>
+<p>这个二维数组实际上完全可以当成一维数组使用：使用<code v-pre>new type[length]</code>初始化一维数组后，相当于定义了length个type类型的变量；类似的，使用<code v-pre>new type[length][]</code>初始化这个数组后，相当于定义了length个type[]类型的变量，当然，这些type[]类型的变量都是数组类型，因此必须再次初始化这些数组。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TwoDimensionTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//定义一个二维数组</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">;</span>
+        <span class="token comment">//把a当成一维数组进行初始化，初始化a是一个长度为4的数组</span>
+        <span class="token comment">//a数组的数组元素又是引用类型</span>
+        a<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">//把a数组当成一维数组，遍历a数组的每个数组元素</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">,</span> len<span class="token operator">=</span>a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len <span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//初始化a数组的第一个元素</span>
+        a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">//访问a数组的第一个元素所指数组的第二个元素</span>
+        a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span>
+        <span class="token comment">//a数组的第一个元素是一个一维数组，遍历这个一维数组</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">,</span> len<span class="token operator">=</span>a<span class="token punctuation">[</span>o<span class="token punctuation">]</span><span class="token punctuation">.</span>length <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len <span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>把a这个二维数组当成一维数组处理，只是每个数组元素都是null，所以我们看到输出结果都是null。下面结合示意图来说明这个程序的执行过程。</p>
+<p>程序的第一行int[][] a;，将在栈内存中定义一个引用变量，这个变量并未指向任何有效的内存空间，此时的堆内存中还未为这行代码分配任何存储区。</p>
+<p>程序对a数组执行初始化：<code v-pre>a=new int[4][];</code>，这行代码让a变量指向一块长度为4的数组内存，这个长度为4的数组里每个数组元素都是引用类型（数组类型），系统为这些数组元素分配默认的初始值：null。</p>
+<p>虽然声明a是一个二维数组，但这里丝毫看不出它是一个二维数组的样子，完全是一维数组的样子。这个一维数组的长度是4，只是这4个数组元素都是引用类型，它们的默认值是null。所以程序中可以把a数组当成一维数组处理，依次遍历a数组的每个元素，将看到每个数组元素的值都是null。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071402031.jpeg" alt="img" loading="lazy"></p>
+<p>因为a数组的元素必须是int[]数组，所以接下来的程序对a[0]元素执行初始化，右边堆内存中的第一个数组元素指向一个有效的数组内存，指向一个长度为2的int数组。因为程序采用动态初始化a[0]数组，因此系统将为a[0]所引用数组的每个元素分配默认的初始值：0，然后程序显式为a[0]数组的第二个元素赋值为6。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071413039.jpeg" alt="img" loading="lazy"></p>
+<p>初始化多维数组时，可以只指定最左边维的大小；当然，也可以一次指定每一维的大小。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">// 同时初始化二维数组的两个数</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>上面代码将定义一个b数组变量，这个数组变量指向一个长度为3的数组，这个数组的每个数组元素又是一个数组类型，它们各指向对应的长度为4的int[]数组，每个数组元素的值为0。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071445217.jpeg" alt="img" loading="lazy"></p>
+<p>还可以使用静态初始化方式来初始化二维数组。使用静态初始化方式来初始化二维数组时，二维数组的每个数组元素都是一维数组，因此必须指定多个一维数组作为二维数组的初始化值。</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token comment">//使用静态初始化语法来初始化一个二维数组</span>
+<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span>str1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>f<span class="token string">"hello"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">//使用简化的静态初始化语法来初始化二维数组</span>
+<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span>str2<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>l<span class="token string">"hello"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><img src="https://gcore.jsdelivr.net/gh/SurplusFate/guide_img@main/img/202207071448198.jpeg" alt="img" loading="lazy"></p>
+<h3 id="操作数组的工具类" tabindex="-1"><a class="header-anchor" href="#操作数组的工具类" aria-hidden="true">#</a> 操作数组的工具类</h3>
+<p>Java提供的Arrays类里包含的一些static修饰的方法可以直接操作数组，这个Arrays类里包含了如下几个static修饰的方法（static修饰的方法可以直接通过类名调用）。</p>
+<ol>
+<li><code v-pre>int binarySearch(type[] a, type key)</code>：使用二分法查询key元素值在a数组中出现的索引；如果a数组不包含key元素值，则返回负数。调用该方法时要求数组中元素已经按升序排列，这样才能得到正确结果。</li>
+<li><code v-pre>int binarySearch(type[] a, int fromIndex, int toIndex, type key)</code>：这个方法与前一个方法类似，但它只搜索a数组中<code v-pre>fromIndex</code>到<code v-pre>toIndex</code>索引的元素。调用该方法时要求数组中元素已经按升序排列，这样才能得到正确结果。</li>
+<li><code v-pre>type[] copyOf(type[] original, int newLength)</code>：这个方法将会把original数组复制成一个新数组，其中length是新数组的长度。如果length小于original数组的长度，则新数组就是原数组的前面length个元素；如果length大于original数组的长度，则新数组的前面元素就是原数组的所有元素，后面补充0（数值类型）、false（布尔类型）或者null（引用类型）。</li>
+<li><code v-pre>type[] copyOfRange(type[] original, int from, int to)</code>：这个方法与前面方法相似，但这个方法只复制original数组的from索引到to索引的元素。</li>
+<li><code v-pre>boolean equals(type[] a, type[] a2)</code>：如果a数组和a2数组的长度相等，而且a数组和a2数组的数组元素也一一相同，该方法将返回true。</li>
+<li><code v-pre>void fill(type[] a, type val)</code>：该方法将会把a数组的所有元素都赋值为<code v-pre>val</code>。</li>
+<li><code v-pre>void fill(type[] a, int fromIndex, int toIndex, type val)</code>：该方法与前一个方法的作用相同，区别只是该方法仅仅将a数组的<code v-pre>fromIndex</code>到<code v-pre>toIndex</code>索引的数组元素赋值为<code v-pre>val</code>。</li>
+<li><code v-pre>void sort(type[] a)</code>：该方法对a数组的数组元素进行排序。</li>
+<li><code v-pre>void sort(type[] a, int fromIndex, int toIndex)</code>：该方法与前一个方法相似，区别是该方法仅仅对<code v-pre>fromIndex</code>到<code v-pre>toIndex</code>索引的元素进行排序。</li>
+<li><code v-pre>String toString(type[] a)</code>：该方法将一个数组转换成一个字符串。该方法按顺序把多个数组元素连缀在一起，多个数组元素使用英文逗号（,）和空格隔开。</li>
+</ol>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArraysTest</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//定义一个a数组</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token comment">//定义一个a2数组</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//a数组和a2数组的长度相等，每个元素依次相等，将输出true</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"a数组和a2数组是否相等:"</span> <span class="token operator">+</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>a <span class="token punctuation">,</span> a2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//通过复制a数组，生成一个新的b数组</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b<span class="token operator">=</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">copyOf</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"a数组和b数组是否相等:"</span> <span class="token operator">+</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//输出b数组的元素，将输出[3,4,5,6,0,0]</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"b数组的元素为:"</span> <span class="token operator">+</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//将b数组的第3个元素（包括)到第5个元素(不包括)赋值为1</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fll</span><span class="token punctuation">(</span>b <span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//输出b数组的元素，将输出[3，4,1,1,0,0]</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printIn</span><span class="token punctuation">(</span><span class="token string">"b数组的元素为︰"</span> <span class="token operator">+</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//对b数组进行排序</span>
+		<span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//输出b数组的元素，将输出[0,0,1,1，3,4]</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"b数组的元素为:"</span> <span class="token operator">+</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container tip"><p class="custom-container-title">提示</p>
+<p>Arrays类处于<code v-pre>java.util</code>包下，为了在程序中使用Arrays类，必须在程序中导入<code v-pre>java.util.Arrays</code>类。</p>
+</div>
+<p>方法
+什么是方法？
+方法就是一段代码片段，并且这段代码片段可以完成某个特定的功能，可以被重复使用
+方法定义在类体当中，一个类当中可以定义多个方法，方法编写的位置没有先后顺序，可以随意。
+方法体中不能再定义方法！
+方法体当中的代码遵守自上而下的顺序依次执行
+方法的定义
+语法结构：
+[修饰符列表] 返回值类型 方法名(形式参数列表){
+方法体;
+}
+修饰符列表：可选项，不必须。
+返回值类型
+什么是返回值
+一个方法是可以完成某个特定功能的，这个功能结束之后大多数都是需要返回最终执行结果的，执行结果可能是一个具体存在的数据，而这个具体存在的数据就是返回值。
+返回值是一个具体存在的数据，数据都是有类型的，此处需要指定的是返回值的具体类型
+返回值类型都可以指定哪些类型呢？
+java任意一种类型都可以，包括基本数据类型和所有的引用数据类型
+也可能这个方法执行结束后不返回任何数据，java中规定，当一个方法执行结束后不返回任何数据的话，返回值类型位置必须编写void关键字
+返回值类型若不是void，表示这个方法执行结束后必须返回一个具体的数值，当方法执行结束后没有返回任何数据则编译器报错，如何返回数值？--&gt;“return 值”，并要求“值”的数据类型必须和“方法的返回值类型”一致。不然编译器报错。
+返回值类型是void的时候，在方法体当中不能编写“return 值；”但可以编写“return”
+只要带有return关键字的语句执行，return语句所在的方法就结束
+返回值类型不是void的时候
+要求方法必须百分百执行“return 值；”这样的语句来完成值的返回。没有这个语句编译器会报错。
+一个方法有返回值的时候，当我们调用这个方法的时候，方法返回了一个值，大部分情况下我们都是选择接收的。
+深入return语句
+带有return关键字的java语句只要执行，当前方法立即终止
+在“同一个作用域”当中，return语句下面不能编写任何代码，因为这些代码永远都执行不到，编译报错。
+方法名
+合法标识符
+最好见名知意
+最好是动词
+首字母小写，后面每个单词首字母大写
+参数
+形式参数列表：形参
+形参是局部变量
+个数可以是0~n个
+多个形参之间用“，”隔开
+形参起决定性作用的是形参的数据类型，形参的名字就是局部变量的名字。
+方法在调用的时候，实际给这个方法传递的真实数据为实际参数，简称实参
+实参列表和形参列表必须满足：
+数量相同
+类型对应相同
+方法体
+方法体必须由大括号括起来，方法体当中的代码有顺序，遵循自上而下·的顺序依次执行，并且方法体由java语句构成，每一个java语句以“；”结尾
+方法怎么调用？
+方法只定义不去调用时不会执行
+语法规则：【方法的修饰符列表当中有static】
+类名.方法名（实参列表）；这是一条java语句
+有时候“类名”可以省略不写，“类名”省略之后，默认从当前类中找“类名”方法
+JVM内存结构
+方法在执行过程当中，在JVM中的内存是如何分配的？内存如何变化？
+方法只定义不调用，不会执行，并且在JVM中也不会给该方法分配“运行所属”的内存空间。只有在调用这个方法的时候，才会动态的给这个方法分配所属的内存空间。
+在JVM内存划分上有这样三块主要的内存空间：
+方法区内存
+堆内存
+栈内存</p>
+<pre><code>					▪ 关于“栈”数据结构：
+</code></pre>
+<p>▪ 栈：stack，是一种数据结构
+▪ 数据结构反应的是数据的储存形态
+▪ 数据结构是独立的学科，不属于任何编程语言的范畴，但在大多数编程语言当中要使
+用数据结构。
+▪ 常见的数据结构：</p>
+<ul>
+<li>
+<p>数组</p>
+</li>
+<li>
+<p>队列</p>
+</li>
+<li>
+<p>栈</p>
+</li>
+<li>
+<p>链表</p>
+</li>
+<li>
+<p>二叉树</p>
+</li>
+<li>
+<p>哈希表/散列表</p>
+</li>
+<li>
+<p>······</p>
+<pre><code>  		▪ 方法代码片段存在哪里？方法执行的时候执行过程的内存在哪里分配？
+</code></pre>
+</li>
+<li>
+<p>方法代码片段属于.class字节码文件的一部分，字节码文件在加载的时候，将其放到了方法区当中。所以JVM中的三块主要当前内存空间中方法区内存最先有数据。存放了代码片段。</p>
+</li>
+<li>
+<p>代码片段虽然在方法区内存当中只有一份，但是可以被重复调用。每一次调用这个方法的时候，需要给该方法分配独立的活动场所,在栈内存中分配。【栈内存中分配方法运行的所属内存空间】</p>
+</li>
+<li>
+<p>方法在调用的时候，会给该方法分配独立的内存空间，在栈中分配，此时发生压栈动作，方法结束后，给该方法分配的内存空间全部释放，此时发生弹栈动作。</p>
+<p>重点：方法调用的时候，在参数传递的时候，实际上传递的是变量中保存的那个“值”传过去了。
+方法重载
+方法重载又被称为：overload
+什么时候考虑使用方法重载?</p>
+</li>
+<li>
+<p>功能相似的时候</p>
+<p>什么条件满足之后构成了方法重载？</p>
+</li>
+<li>
+<p>在同一个类当中</p>
+</li>
+<li>
+<p>方法名相同
+参数列表不同：</p>
+</li>
+<li>
+<p>数量不同</p>
+</li>
+<li>
+<p>顺序不同</p>
+</li>
+<li>
+<p>类型不同</p>
+<p>方法重载和什么有关系？
+与方法名+参数列表有关
+与返回值类型无关
+与修饰符列表无关
+方法递归
+什么是递归？
+方法自身调用自身
+递归非常的消耗内存，能不用就别用
+递归必须有结束条件，没有结束条件一定会发生栈内存溢出错误
+如果递归太深了，即使有结束条件，也可能发生栈内存溢出</p>
+</li>
+</ul>
+</div></template>

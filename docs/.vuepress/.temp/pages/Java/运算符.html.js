@@ -43,13 +43,6 @@ export const data = {
       [
         "meta",
         {
-          "property": "og:updated_time",
-          "content": "2022-07-08T12:38:34.000Z"
-        }
-      ],
-      [
-        "meta",
-        {
           "property": "og:locale",
           "content": "zh-CN"
         }
@@ -59,13 +52,6 @@ export const data = {
         {
           "property": "article:published_time",
           "content": "2022-06-06T00:00:00.000Z"
-        }
-      ],
-      [
-        "meta",
-        {
-          "property": "article:modified_time",
-          "content": "2022-07-08T12:38:34.000Z"
         }
       ]
     ]
@@ -121,20 +107,22 @@ export const data = {
       "children": []
     }
   ],
-  "git": {
-    "createdTime": 1657283914000,
-    "updatedTime": 1657283914000,
-    "contributors": [
-      {
-        "name": "SurplusFate",
-        "email": "1543403469@qq.com",
-        "commits": 1
-      }
-    ]
-  },
   "readingTime": {
     "minutes": 17.09,
     "words": 5127
   },
   "filePathRelative": "Java/运算符.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }

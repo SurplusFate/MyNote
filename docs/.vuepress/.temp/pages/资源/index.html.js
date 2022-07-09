@@ -37,22 +37,8 @@ export const data = {
       [
         "meta",
         {
-          "property": "og:updated_time",
-          "content": "2022-07-08T12:38:34.000Z"
-        }
-      ],
-      [
-        "meta",
-        {
           "property": "og:locale",
           "content": "zh-CN"
-        }
-      ],
-      [
-        "meta",
-        {
-          "property": "article:modified_time",
-          "content": "2022-07-08T12:38:34.000Z"
         }
       ]
     ]
@@ -102,20 +88,22 @@ export const data = {
       "children": []
     }
   ],
-  "git": {
-    "createdTime": 1657283914000,
-    "updatedTime": 1657283914000,
-    "contributors": [
-      {
-        "name": "SurplusFate",
-        "email": "1543403469@qq.com",
-        "commits": 1
-      }
-    ]
-  },
   "readingTime": {
     "minutes": 0.12,
     "words": 35
   },
   "filePathRelative": "资源/readme.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }
